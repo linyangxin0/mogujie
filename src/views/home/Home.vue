@@ -1,13 +1,14 @@
 <template>
   <div class="home-content">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-    <scroll class="content">
+    <scroll class="content"  ref="scroll">
       <home-swiper :banners="banners"></home-swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view/>
       <tab-control :titles="['流行','新款','精选']" @tabClick="tabClick"></tab-control>
       <goods-list :goods="showGoods"></goods-list>
     </scroll>
+    <back-top @click.native="backClick"></back-top>
   </div>
 </template>
 
@@ -18,6 +19,7 @@
   import FeatureView from "./childCompinents/FeatureView";
   import TabControl from "components/content/TabControl/TabControl";
   import GoodsList from "components/content/GooList/GoodsList";
+  import BackTop from "components/content/BackTop/BackTop";
 
   import {getHomeMultidata,getHomeGoods} from "../../network/home";
   import Scroll from "components/common/scroll/Scroll";
@@ -31,7 +33,8 @@
       HomeSwiper,
       NavBar,
       FeatureView,
-      Scroll
+      Scroll,
+      BackTop
     },
     data(){
       return{
@@ -71,6 +74,9 @@
             this.curretType='sell'
             break
         }
+      },
+      backClick(){
+        this.$refs.scroll.scroll.scrollTo(0, 0, 500)
       }
     },
     created() {
