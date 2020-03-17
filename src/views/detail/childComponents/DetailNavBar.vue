@@ -1,5 +1,5 @@
 <template>
-  <NavBar>
+  <NavBar class="nav-bar">
     <div slot="left" class="back-inco" @click="backHome">
       <img src="~assets/img/common/back.svg">
     </div>
