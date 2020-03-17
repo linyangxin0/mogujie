@@ -33,6 +33,8 @@
     font-size: 12px;
     padding: 15px 0px 20px;
     border-bottom: 10px solid #eee;
+
+    background-color: white;
   }
   .recommends-item{
     flex: 1;
