@@ -1,5 +1,8 @@
 <template>
   <NavBar>
+    <div slot="left" class="back-inco" @click="backHome">
+      <img src="~assets/img/common/back.svg">
+    </div>
     <div slot="center" class="center">
       <div v-for="(item,index) in title" class="nav-bar-title" :class="{active:index===currentIndex}" @click="titleClick(index)">
         {{item}}
@@ -25,12 +28,23 @@
     methods:{
       titleClick(index){
         this.currentIndex=index
+      },
+      backHome(){
+        this.$router.back()
       }
     }
   }
 </script>
 
 <style scoped>
+
+  .back-inco{
+    text-align: center;
+  }
+
+  .back-inco img{
+    margin-top: 10px;
+  }
 
   .center{
     display: flex;

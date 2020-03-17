@@ -139,6 +139,7 @@
     deactivated() {
       this.saveY=this.$refs.scroll.getScrollY()
     }
+
   }
 </script>
 
