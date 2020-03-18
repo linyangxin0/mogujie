@@ -9,7 +9,7 @@
     <div class="columns">
       <span class="sell">{{goods.columns[0]}}</span>
       <span class="cafv">{{goods.columns[1]}}</span>
-      <span class="send">{{goods.services[3].name}}</span>
+      <span class="send">{{goods.services[goods.services.length-1].name}}</span>
     </div>
     <div class="services">
       <div>

@@ -10,6 +10,7 @@
       <detail-common-info :commentInfo="commentInfo"/>
       <detail-recommon-info :recommendList="recommendList"/>
     </scroll>
+    <detail-bottom-bar class="detail-bottom-bar"/>
   </div>
 </template>
 
@@ -23,6 +24,7 @@
   import DetailParamInfo from "./childComponents/DetailParamInfo";
   import DetailCommonInfo from "./childComponents/DetailCommonInfo";
   import DetailRecommonInfo from "./childComponents/DetailRecommonInfo";
+  import DetailBottomBar from "./childComponents/DetailBottomBar";
 
   import {getGoodsDetail, Goods, Shop,GoodsParam,getRecommend} from "network/detail";
 
@@ -37,7 +39,8 @@
       DetailGoodsInfo,
       DetailParamInfo,
       DetailCommonInfo,
-      DetailRecommonInfo
+      DetailRecommonInfo,
+      DetailBottomBar
     },
     data(){
       return{
@@ -107,11 +110,17 @@
     /*position: absolute;*/
     /*top: 44px;*/
     /*bottom: 58px;*/
-    /*right: 0px;*/
-    /*left: 0px;*/
 
     /*overflow: hidden;*/
-    height: calc(100% - 44px);
+    height: calc(100% - 44px - 58px);
+  }
+
+  .detail-bottom-bar{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
   }
 
 
