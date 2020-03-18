@@ -9,7 +9,7 @@
       <div class="shop-base-info">
         <div class="shop-sell">
           <div class="sell-account">
-            {{shop.sells}}
+            {{shop.sells|sellCountFilter}}
           </div>
           <div class="sell-text">
             总销量
@@ -49,6 +49,12 @@
     },
     data(){
       return{
+      }
+    },
+    filters: {
+      sellCountFilter: function (value) {
+        if (value < 10000) return value;
+        return (value/10000).toFixed(1) + '万'
       }
     }
   }
