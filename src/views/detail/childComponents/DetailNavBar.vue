@@ -22,12 +22,19 @@
     data(){
       return{
         title:['商品','参数','评论','推荐'],
-        currentIndex:0
+        // currentIndex:0
+      }
+    },
+    props:{
+      currentIndex:{
+        type:Number,
+        default:0
       }
     },
     methods:{
       titleClick(index){
         this.currentIndex=index
+        this.$emit('titleClick',index)
       },
       backHome(){
         this.$router.back()

@@ -1,16 +1,20 @@
 <template>
   <div id="detail">
-    <detail-nav-bar class="nav-bar"></detail-nav-bar>
-    <scroll class="content">
+    <detail-nav-bar class="nav-bar" @titleClick="titleClick" :current-index="currentIndex"></detail-nav-bar>
+    <scroll class="content"
+            ref="scroll"
+            :probe-type="3"
+            @scroll="contentScroll">
       <detail-swiper :topImages="topImages"/>
       <detail-base-info :goods="goods"></detail-base-info>
       <detail-shop-info :shop="shop"/>
       <detail-goods-info :detailInfo="detailInfo"/>
-      <detail-param-info :paramInfo="paramInfo"/>
-      <detail-common-info :commentInfo="commentInfo"/>
-      <detail-recommon-info :recommendList="recommendList"/>
+      <detail-param-info :paramInfo="paramInfo" ref="param"/>
+      <detail-common-info :commentInfo="commentInfo" ref="common"/>
+      <detail-recommon-info :recommendList="recommendList" ref="recommend"/>
     </scroll>
     <detail-bottom-bar class="detail-bottom-bar"/>
+    <back-top @click.native="backTopClick" v-show="isBackTopShow"/>
   </div>
 </template>
 
@@ -25,6 +29,7 @@
   import DetailCommonInfo from "./childComponents/DetailCommonInfo";
   import DetailRecommonInfo from "./childComponents/DetailRecommonInfo";
   import DetailBottomBar from "./childComponents/DetailBottomBar";
+  import BackTop from "components/content/BackTop/BackTop";
 
   import {getGoodsDetail, Goods, Shop,GoodsParam,getRecommend} from "network/detail";
 
@@ -40,7 +45,8 @@
       DetailParamInfo,
       DetailCommonInfo,
       DetailRecommonInfo,
-      DetailBottomBar
+      DetailBottomBar,
+      BackTop
     },
     data(){
       return{
@@ -51,7 +57,10 @@
         detailInfo:{},
         paramInfo:{},
         commentInfo:{},
-        recommendList:[]
+        recommendList:[],
+        isBackTopShow:false,
+        navBarOffsetTop:[],
+        currentIndex:0
       }
     },
     created() {
@@ -87,6 +96,39 @@
         if (error) return
         this.recommendList = res.data.list
       })
+    },
+    updated() {
+      this._getOffsetTops()
+    },
+    methods:{
+      backTopClick(){
+        this.$refs.scroll.scrollTo(0,0,500)
+      },
+      contentScroll(position){
+        //backtop显示与隐藏
+        this.isBackTopShow=(-position.y)>1000
+
+        // nav-bar的高亮指示
+        for (var i=1;i<5;i++){
+          if(this.navBarOffsetTop[i]>-position.y){
+            this.currentIndex=i-1
+            break
+          }
+        }
+
+
+      },
+      titleClick(index){
+        this.$refs.scroll.scrollTo(0,-this.navBarOffsetTop[index],500)
+      },
+      _getOffsetTops(){
+        this.navBarOffsetTop=[]
+        this.navBarOffsetTop.push(0)
+        this.navBarOffsetTop.push(this.$refs.param.$el.offsetTop)
+        this.navBarOffsetTop.push(this.$refs.common.$el.offsetTop)
+        this.navBarOffsetTop.push(this.$refs.recommend.$el.offsetTop)
+        this.navBarOffsetTop.push(Number.MAX_VALUE)
+      }
     }
   }
 </script>
