@@ -13,7 +13,7 @@
       <detail-common-info :commentInfo="commentInfo" ref="common"/>
       <detail-recommon-info :recommendList="recommendList" ref="recommend"/>
     </scroll>
-    <detail-bottom-bar class="detail-bottom-bar"/>
+    <detail-bottom-bar class="detail-bottom-bar" @addCart="addCart"/>
     <back-top @click.native="backTopClick" v-show="isBackTopShow"/>
   </div>
 </template>
@@ -60,7 +60,8 @@
         recommendList:[],
         isBackTopShow:false,
         navBarOffsetTop:[],
-        currentIndex:0
+        currentIndex:0,
+        addToCartGood:{}
       }
     },
     created() {
@@ -128,6 +129,20 @@
         this.navBarOffsetTop.push(this.$refs.common.$el.offsetTop)
         this.navBarOffsetTop.push(this.$refs.recommend.$el.offsetTop)
         this.navBarOffsetTop.push(Number.MAX_VALUE)
+      },
+      addCart(){
+        //获取商品信息对象
+        const product={}
+        product.image=this.topImages[0]
+        product.title=this.goods.title
+        product.desc=this.goods.desc
+        product.price=this.goods.realPrice
+        product.iid=this.iid
+        product.isActive=true
+
+      //将商品添加至购物车
+        this.$store.commit('addCart',product)
+
       }
     }
   }

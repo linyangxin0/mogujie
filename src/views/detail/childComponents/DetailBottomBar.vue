@@ -12,7 +12,7 @@
       <i></i>
       <span>收藏</span>
     </div>
-    <div class="enter">
+    <div class="enter" @click="addCart">
       <span>加入购物车</span>
     </div>
     <div class="buy">
@@ -23,7 +23,12 @@
 
 <script>
   export default {
-    name: "DetailBottomBar"
+    name: "DetailBottomBar",
+    methods:{
+      addCart(){
+        this.$emit('addCart')
+      }
+    }
   }
 </script>
 
