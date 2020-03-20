@@ -19,6 +19,9 @@
           return[]
         }
       }
+    },
+    updated() {
+      this.$emit('componentUpdate')
     }
   }
 </script>

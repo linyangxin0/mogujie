@@ -8,10 +8,15 @@
                               class="tab-content-category"/>
       </scroll>
 
-      <scroll class="tab-content">
+      <scroll class="tab-content" ref="scroll">
         <div>
           <category-item-dsiaplay :subcategories="getSubcategoriesList"
+                                  @componentUpdate="itemUpdate"
                                   class="category-item-dsiaplay"/>
+          <tab-control :titles="['综合', '新品', '销量']"
+                       class="tab-control"
+                       @tabClick="tabClick"></tab-control>
+          <cartgory-item-detail :category-detail="getTypeCategoryDetail"/>
 
         </div>
       </scroll>
@@ -23,10 +28,12 @@
 
   import CategoryNavBar from "./childComponent/CategoryNavBar";
   import TabContentCategory from "./childComponent/TabContentCategory";
+  import TabControl from "components/content/TabControl/TabControl";
 
   import {getCategory,getSubcategory,getCategoryDetail} from "../../network/category";
   import CategoryItemDsiaplay from "./childComponent/CategoryItemDsiaplay";
   import Scroll from "components/common/scroll/Scroll";
+  import CartgoryItemDetail from "./childComponent/CartgoryItemDetail";
 
   export default {
     name: "Category",
@@ -34,14 +41,17 @@
       return{
         categoryList:[],
         categoryIndex:-1,
-        categoryData:{}
+        categoryData:{},
+        currentType:'pop'
       }
     },
     components: {
+      CartgoryItemDetail,
       Scroll,
       CategoryItemDsiaplay,
       CategoryNavBar,
-      TabContentCategory
+      TabContentCategory,
+      TabControl
     },
     created() {
       this._getCategory()
@@ -89,11 +99,30 @@
           this.categoryData[this.categoryIndex].categoryDetail[type] = res
           this.categoryData = {...this.categoryData}
         })
+      },
+      itemUpdate(){
+        this.$refs.scroll.refresh()
+      },
+      tabClick(index){
+        switch (index) {
+          case 0:
+            this.currentType='pop'
+            break
+          case 1:
+            this.currentType='new'
+            break
+          case 2:
+            this.currentType='sell'
+            break
+        }
       }
     },
     computed:{
       getSubcategoriesList(){
         return this.categoryData[this.categoryIndex].subcategories.list
+      },
+      getTypeCategoryDetail(){
+        return this.categoryData[this.categoryIndex].categoryDetail[this.currentType]
       }
     }
   }
@@ -132,8 +161,10 @@
     overflow: hidden;
   }
 
-  .category-item-dsiaplay{
+  .tab-control{
+    margin-top: 20px;
   }
+
 
 
 
