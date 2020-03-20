@@ -35,6 +35,9 @@
   import Scroll from "components/common/scroll/Scroll";
   import CartgoryItemDetail from "./childComponent/CartgoryItemDetail";
 
+  import {debounce} from "common/utils";
+
+
   export default {
     name: "Category",
     data(){
@@ -124,6 +127,11 @@
       getTypeCategoryDetail(){
         return this.categoryData[this.categoryIndex].categoryDetail[this.currentType]
       }
+    },
+    mounted() {
+      this.$bus.$on('itemImgLoad',()=>{
+        debounce(this.$refs.scroll.refresh(),500)
+      })
     }
   }
 </script>

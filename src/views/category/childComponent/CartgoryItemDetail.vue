@@ -6,13 +6,11 @@
 
 <script>
   import CategoryRecommonInfo from "./CategoryRecommonInfo";
-  // import DetailRecommonInfo from "../../detail/childComponents/DetailRecommonInfo";
 
   export default {
     name: "CartgoryItemDetail",
     components:{
-      CategoryRecommonInfo,
-      // DetailRecommonInfo
+      CategoryRecommonInfo
     },
     props:{
       categoryDetail:{

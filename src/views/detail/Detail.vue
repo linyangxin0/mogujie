@@ -32,6 +32,7 @@
   import BackTop from "components/content/BackTop/BackTop";
 
   import {getGoodsDetail, Goods, Shop,GoodsParam,getRecommend} from "network/detail";
+  import {debounce} from "common/utils";
 
   export default {
     name: "detail",
@@ -100,6 +101,11 @@
     },
     updated() {
       this._getOffsetTops()
+    },
+    mounted() {
+      this.$bus.$on('itemImgLoad',()=>{
+        debounce(this.$refs.scroll.refresh(),500)
+      })
     },
     methods:{
       backTopClick(){

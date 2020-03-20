@@ -2,7 +2,7 @@
   <div class="category-item-display">
     <div class="content">
       <div v-for="item in subcategories" class="item">
-        <img :src="item.image">
+        <img :src="item.image" @load="itemImgLoad">
         <div class="item-text">{{item.title}}</div>
       </div>
     </div>
@@ -22,6 +22,11 @@
     },
     updated() {
       this.$emit('componentUpdate')
+    },
+    methods:{
+      itemImgLoad(){
+        this.$bus.$emit('itemImgLoad')
+      }
     }
   }
 </script>
