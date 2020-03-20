@@ -1,8 +1,10 @@
 <template>
-  <div class="content">
-    <div v-for="item in subcategories" class="item">
+  <div class="category-item-display">
+    <div class="content">
+      <div v-for="item in subcategories" class="item">
         <img :src="item.image">
         <div class="item-text">{{item.title}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,13 +28,13 @@
   .content{
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
   }
 
   .item{
     width: 33%;
     text-align: center;
     font-size: 12px;
+    margin-top: 10px;
   }
 
   .item img{
@@ -40,7 +42,7 @@
   }
 
   .item-text{
-    margin-top: 15px;
+    margin-top: 10px;
   }
 
 </style>

@@ -12,6 +12,7 @@
         <div>
           <category-item-dsiaplay :subcategories="getSubcategoriesList"
                                   class="category-item-dsiaplay"/>
+
         </div>
       </scroll>
     </div>
@@ -129,6 +130,9 @@
 
     /*height: calc(100% - 0px - 49px);*/
     overflow: hidden;
+  }
+
+  .category-item-dsiaplay{
   }
 
 

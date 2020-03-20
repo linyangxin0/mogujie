@@ -41,8 +41,10 @@
 
 <style scoped>
   .category{
-    display: inline-block;
+    background-color: #f6f6f6;
+    height: 100%;
     width: 100px;
+    box-sizing: border-box;
   }
 
   /*.tab-menu{*/
@@ -53,16 +55,14 @@
   /*}*/
 
   .content{
-    font-size: 14px;
   }
 
   .item{
     height: 45px;
     line-height: 45px;
     text-align: center;
-    background-color: #f6f6f6;
     color: #666;
-    box-sizing: border-box;
+    font-size: 14px;
   }
 
   .actived{
