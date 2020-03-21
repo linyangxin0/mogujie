@@ -123,7 +123,7 @@
 
     },
     mounted() {
-      this.$bus.$on('itemImgLoad',()=>{
+      this.$bus.$on('homeItemImgLoad',()=>{
         debounce(this.$refs.scroll.refresh(),500)
       })
     },

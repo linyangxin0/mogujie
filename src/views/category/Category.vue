@@ -133,7 +133,7 @@
       }
     },
     mounted() {
-      this.$bus.$on('itemImgLoad',()=>{
+      this.$bus.$on('categoryItemImgLoad',()=>{
         debounce(this.$refs.scroll.refresh(),500)
       })
     }

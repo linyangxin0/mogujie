@@ -102,7 +102,7 @@
       this._getOffsetTops()
     },
     mounted() {
-      this.$bus.$on('itemImgLoad',()=>{
+      this.$bus.$on('detailItemImgLoad',()=>{
         debounce(this.$refs.scroll.refresh(),500)
       })
     },
