@@ -5,7 +5,7 @@
     <div class="end"><span></span></div>
     <div class="detail-key">{{detailInfo.detailImage[0].key}}</div>
     <div v-for="item in detailInfo.detailImage[0].list" class="detail-img">
-      <img :src="item">
+      <img :src="item" @load="itemImgLoad">
     </div>
   </div>
 </template>
@@ -19,6 +19,11 @@
         default(){
           return{}
         }
+      }
+    },
+    methods:{
+      itemImgLoad(){
+        this.$bus.$emit('itemImgLoad')
       }
     }
   }

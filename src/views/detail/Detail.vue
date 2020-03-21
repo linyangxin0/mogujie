@@ -30,13 +30,16 @@
   import DetailRecommonInfo from "./childComponents/DetailRecommonInfo";
   import DetailBottomBar from "./childComponents/DetailBottomBar";
   import BackTop from "components/content/BackTop/BackTop";
+  import Toast from "components/content/Toast/Toast";
 
   import {getGoodsDetail, Goods, Shop,GoodsParam,getRecommend} from "network/detail";
   import {debounce} from "common/utils";
+  import toast from "../../components/content/Toast/Toast";
 
   export default {
     name: "detail",
     components: {
+      Toast,
       DetailNavBar,
       DetailSwiper,
       DetailBaseInfo,
@@ -69,7 +72,6 @@
       this.iid = this.$route.params.iid
 
       getGoodsDetail(this.iid).then(res=>{
-        console.log(res)
 
         const data=res.result
         //轮播图数据
@@ -149,6 +151,7 @@
       //将商品添加至购物车
         this.$store.commit('addCart',product)
 
+        this.$toast.show('已加入购物车',1500)
       }
     }
   }
