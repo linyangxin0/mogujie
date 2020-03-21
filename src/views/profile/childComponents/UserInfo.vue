@@ -2,9 +2,10 @@
   <div id="user-info">
     <a href="#" class="clear-fix">
       <slot name="user-icon">
-        <svg class="privateImage-svg left">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#avatar-default"></use>
-        </svg>
+<!--        <svg class="privateImage-svg left">-->
+<!--          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#avatar-default"></use>-->
+<!--        </svg>-->
+        <svg-icon name="head" class="privateImage-svg left"></svg-icon>
       </slot>
       <div class="login-info left">
         <slot name="user-nickname">
@@ -12,12 +13,13 @@
         </slot>
         <div class="phone">
           <span>
-            <svg data-v-735ff1be="" fill="#fff" class="icon-mobile"><use data-v-735ff1be="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mobile"></use></svg>
+            <svg-icon name="phone" fill="#fff" class="icon-mobile"></svg-icon>
           </span>
           <slot name="user-phone">暂无绑定手机号</slot>
         </div>
       </div>
-      <svg data-v-735ff1be="" fill="#fff" class="arrow-svg right"><use data-v-735ff1be="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
+      <svg-icon name="arrow" class="arrow-svg right"></svg-icon>
+<!--      <svg data-v-735ff1be="" fill="#fff" class="arrow-svg right"><use data-v-735ff1be="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>-->
     </a>
   </div>
 </template>
@@ -47,7 +49,7 @@
   }
 
   #user-info .arrow-svg {
-    width: 11px;
+    width: 22px;
     height: 22px;
     margin-top: 18px;
   }
@@ -68,9 +70,9 @@
 
   #user-info .login-info .phone .icon-mobile {
     position: absolute;
-    width: 12px;
+    width: 18px;
     height: 18px;
-    left: -15px;
+    left: -17px;
     top: 0px;
   }
 </style>

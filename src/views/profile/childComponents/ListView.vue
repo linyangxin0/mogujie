@@ -2,7 +2,8 @@
     <div id="list">
       <div v-for="(item, index) in listData" :key="index" class="item">
         <span class="icon">
-          <svg :fill="item.iconColor"><use :xlink:href="item.icon"></use></svg>
+<!--          <svg :fill="item.iconColor"><use :xlink:href="item.icon"></use></svg>-->
+          <svg-icon :name="item.icon" ></svg-icon>
         </span>
         <div class="info">{{item.info}}</div>
       </div>

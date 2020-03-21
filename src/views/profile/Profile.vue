@@ -43,13 +43,13 @@
     data: function () {
       return {
         orderList: [
-          {icon: '#order', iconColor: '#ff8198', info: '我的消息'},
-          {icon: '#point', iconColor: '#fc7b53', info: '积分商城'},
-          {icon: '#vip', iconColor: '#ffc636', info: '会员卡'},
+          {icon: 'order_unread', iconColor: '#ff8198', info: '我的消息'},
+          {icon: 'mall', iconColor: '#fc7b53', info: '积分商城'},
+          {icon: 'card', iconColor: '#ffc636', info: '会员卡'},
         ],
         serviceList: [
-          {icon: '#service', iconColor: '#ff8198', info: '我的购物车'},
-          {icon: '#download', iconColor: '#ff8198', info: '下载购物APP'},
+          {icon: 'cart', iconColor: '#ff8198', info: '我的购物车'},
+          {icon: 'download', iconColor: '#ff8198', info: '下载购物APP'},
         ]
       }
     }
@@ -57,6 +57,7 @@
 </script>
 
 <style scoped>
+
   .content{
     background-color: #f2f2f2;
   }

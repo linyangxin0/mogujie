@@ -5,7 +5,9 @@ import store from "./store";
 import VueLazyLoad from 'vue-lazyload'
 import FastClick from 'fastclick'
 import toast from 'components/common/toast'
+import SvgIcon from "./components/SvgIcon";
 
+Vue.component('SvgIcon', SvgIcon)
 
 Vue.config.productionTip = false
 
