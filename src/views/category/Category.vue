@@ -122,9 +122,13 @@
     },
     computed:{
       getSubcategoriesList(){
+        if(this.categoryIndex===-1)
+          return []
         return this.categoryData[this.categoryIndex].subcategories.list
       },
       getTypeCategoryDetail(){
+        if(this.categoryIndex===-1)
+          return []
         return this.categoryData[this.categoryIndex].categoryDetail[this.currentType]
       }
     },
