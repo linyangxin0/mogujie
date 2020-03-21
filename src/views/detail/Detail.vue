@@ -30,16 +30,13 @@
   import DetailRecommonInfo from "./childComponents/DetailRecommonInfo";
   import DetailBottomBar from "./childComponents/DetailBottomBar";
   import BackTop from "components/content/BackTop/BackTop";
-  import Toast from "components/content/Toast/Toast";
 
   import {getGoodsDetail, Goods, Shop,GoodsParam,getRecommend} from "network/detail";
   import {debounce} from "common/utils";
-  import toast from "../../components/content/Toast/Toast";
 
   export default {
     name: "detail",
     components: {
-      Toast,
       DetailNavBar,
       DetailSwiper,
       DetailBaseInfo,
